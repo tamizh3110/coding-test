@@ -72,10 +72,10 @@ const catsList = [
 ### Submission
 There are several ways to submit your completed assignment:
 
-1. (Preferred) PR Method
+#### PR Method (Preferred)
 - Create a PR for your new branch -> master **in your own repository**
 - Email hugh.soong@rbc.com with a link to the PR
 
-2. Zip Method
+#### Zip Method
 - Zip your completed code
 - Email it to hugh.soong@rbc.com
