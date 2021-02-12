@@ -8,12 +8,6 @@ https://founded.media/hiring/videos/cat-shark-app.mp4
 
 If you have any questions, require further details or get stuck please do not hesitate to contact Hugh Soong (hugh.soong@rbc.com).
 
-## Instructions
-
-- Fork this repository
-- Complete the assignment on a new branch within your forked repository
-- Submit a pull request in this repository
-
 ## Requirements
 
 The Express server, besides delivering whats required for React, should also provide an API endpoint that will return one of 3 possible lists of photo URLs (please see attached lists). Your React app should make a request to your API endpoint to retrieve a photo list. During this request the React app should show a loading state. Once the photo list has been retrieved the loading state should dismiss and the first photo should be shown. The user should now be able to cycle through the photos using left and right arrow buttons. The user can use the UI to toggle between cat photos, shark photos, or both (when both selected they should arrive in a random order). After each change to the desired list the loading state should be shown just like during the initial load and a new request to the photo API endpoint should be made (i.e. Do not cache the photo lists).
@@ -67,3 +61,21 @@ const catsList = [
  'https://founded.media/hiring/photos/cats/4481336172_7f464f180d_b.jpg'
 ];
 ```
+
+## Instructions
+
+### Getting started
+
+- Fork or clone this repository
+- Complete the assignment in a separate branch in your version of the repository
+
+### Submission
+There are several ways to submit your completed assignment:
+
+1. (Preferred) PR Method
+- Create a PR for your new branch -> master **in your own repository**
+- Email hugh.soong@rbc.com with a link to the PR
+
+2. Zip Method
+- Zip your completed code
+- Email it to hugh.soong@rbc.com
