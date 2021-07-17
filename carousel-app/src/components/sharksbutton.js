@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import Spinner from './spinner'
 
 class Sharksbutton extends React.Component{
     constructor(props){
@@ -19,16 +18,25 @@ class Sharksbutton extends React.Component{
             toggle_sharks:!prevState.toggle_sharks
         }))
         
-        this.setState({loading: true}, () => {
+        this.setState({loading: true}, async () => {
 
             if(this.state.toggle_sharks){
                 console.log("shark is working")
-            
-                axios.get('http://localhost:3001/api/sharks')
-                .then(result => this.setState({
-                loading: false,
-                sharks_list: result.data,
-                }, () => this.props.parentCall(this.state)));
+                try{
+                    const result = await axios.get('http://localhost:3001/api/sharks')
+                    this.setState({
+                        loading: false,
+                        sharks_list: result.data,
+                    }, () => this.props.parentCall(this.state));
+                }catch(error){
+                    console.log(error)
+                }
+                
+                // axios.get('http://localhost:3001/api/sharks')
+                // .then(result => this.setState({
+                // loading: false,
+                // sharks_list: result.data,
+                // }, () => this.props.parentCall(this.state)));
 
             }else{
                 this.setState({
@@ -46,7 +54,6 @@ class Sharksbutton extends React.Component{
                     <button onClick={this.handleClick}>Sharks      
                     </button>
                 </div>
-                
             )
         }
     }

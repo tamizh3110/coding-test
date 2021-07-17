@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import Spinner from './spinner'
 
 class Catsbutton extends React.Component{
     constructor(props){
@@ -21,17 +20,21 @@ class Catsbutton extends React.Component{
         }))
 
 
-        this.setState({loading: true}, () => {
+        this.setState({loading: true}, async () => {
 
             if(this.state.toggle_cats){
                 console.log("cat is working")
-                axios.get('http://localhost:3001/api/cats')
-                .then(result => this.setState({
-                loading: false,
-                cats_list: result.data,
-                }, () => this.props.parentCall(this.state)));
-                
-
+                try{
+                    const result = await axios.get('http://localhost:3001/api/cats') 
+                    this.setState({
+                    loading: false,
+                    cats_list: result.data,
+                    }, () => this.props.parentCall(this.state));
+                    
+                }catch(error){
+                    console.log(error)
+                }
+        
             }else{
                 this.setState({
                     cats_list:[],
@@ -48,8 +51,6 @@ class Catsbutton extends React.Component{
                 <div>
                         <button onClick={this.handleClick}>Cats
                         </button>
-    
-
                 </div>
                 
             )
