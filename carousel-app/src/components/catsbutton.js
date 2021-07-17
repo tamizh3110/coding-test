@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import spinner from './spinner'
-import Carousel from './carousel'
+import Spinner from './spinner'
 
 class Catsbutton extends React.Component{
     constructor(props){
@@ -15,27 +14,31 @@ class Catsbutton extends React.Component{
     }
 
     handleClick(){
+
+        
         this.setState(prevState => ({
             toggle_cats:!prevState.toggle_cats
         }))
+
 
         this.setState({loading: true}, () => {
 
             if(this.state.toggle_cats){
                 console.log("cat is working")
-            // axios.get('/endpoint')
-            // .then(result => this.setState({
-            //   loading: false,
-            //   cats_list: [...result.data],
-            // }));
+                axios.get('http://localhost:3001/api/cats')
+                .then(result => this.setState({
+                loading: false,
+                cats_list: result.data,
+                }, () => this.props.parentCall(this.state)));
+                
+
             }else{
                 this.setState({
-                    cats_list:[]
-                })
+                    cats_list:[],
+                    loading:false
+                },() => this.props.parentCall(this.state))
             }
           });
-
-          this.props.parentCall(this.state)
 
         }
 
@@ -43,8 +46,9 @@ class Catsbutton extends React.Component{
         {
             return(
                 <div>
-                        <button onClick={this.handleClick}>"Cats"</button>
-
+                        <button onClick={this.handleClick}>Cats
+                        </button>
+    
 
                 </div>
                 

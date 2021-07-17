@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import spinner from './spinner'
-import Carousel from './carousel'
+import Spinner from './spinner'
 
 class Sharksbutton extends React.Component{
     constructor(props){
@@ -24,29 +23,30 @@ class Sharksbutton extends React.Component{
 
             if(this.state.toggle_sharks){
                 console.log("shark is working")
+            
+                axios.get('http://localhost:3001/api/sharks')
+                .then(result => this.setState({
+                loading: false,
+                sharks_list: result.data,
+                }, () => this.props.parentCall(this.state)));
 
-            // axios.get('/endpoint')
-            // .then(result => this.setState({
-            //   loading: false,
-            //   cats_list: [...result.data],
-            // }));
             }else{
                 this.setState({
-                    sharks_list:[]
-                })
+                    sharks_list:[],
+                    loading: false
+                }, () => this.props.parentCall(this.state))
             }
           });
-
-          this.props.parentCall(this.state)
-
         }
 
     render()
         {
             return(
                 <div>
-                    <button onClick={this.handleClick}>"Sharks"</button>
+                    <button onClick={this.handleClick}>Sharks      
+                    </button>
                 </div>
+                
             )
         }
     }

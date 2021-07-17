@@ -2,7 +2,7 @@ import React from 'react'
 
 function spinner() {
     return (
-        <div>
+        <div class = "loader">
             Loading....           
         </div>
     )
