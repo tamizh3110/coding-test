@@ -3,7 +3,7 @@ import Sharkbutton from './sharksbutton'
 import Catbutton from './catsbutton'
 import CarouselViewer from './carouselViewer'
 
-class carousel extends React.Component{
+class Carousel extends React.Component{
 
     constructor(props){
         super(props)
@@ -14,10 +14,7 @@ class carousel extends React.Component{
 
         this.filterImages = this.filterImages.bind(this)
     }
-    componentDidMount(){
-        console.log("carousel updated")
-    }
-
+   
     handleCatCallBack = (c) =>{
         this.setState({
             catsData:c
@@ -51,9 +48,7 @@ class carousel extends React.Component{
     }
 
     render(){
-
         const finalImageList = this.filterImages()
-
         return (
             <div class = "grouping">   
                 <center><Catbutton parentCall = {this.handleCatCallBack}/></center>
@@ -65,4 +60,4 @@ class carousel extends React.Component{
     
 }
 
-export default carousel
+export default Carousel

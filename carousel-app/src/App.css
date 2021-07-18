@@ -15,7 +15,15 @@ body {
   width:50%;
   height:50%;
 }
+.catVioletClass{
+  color:white;
+  background-color: blueviolet;
+}
+.sharkVioletClass{
+  color:white;
+  background-color: blueviolet;
 
+}
 .loader,
 .loader:after {
   border-radius: 50%;

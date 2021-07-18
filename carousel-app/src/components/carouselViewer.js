@@ -19,7 +19,7 @@ function CarouselViewer(props) {
     const images = carouselData.map((elem,index) => {
         return(
             <div key = {index}>
-                <img alt = {elem+index} src = {elem} width = "auto" height="50%"/> 
+                <img alt = {elem} src = {elem} width = "auto" height="50%"/> 
             </div>
         )
     })

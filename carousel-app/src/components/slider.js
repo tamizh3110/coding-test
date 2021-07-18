@@ -2,7 +2,7 @@
 import leftArrow from "./icons/left-arrow.svg";
 import rightArrow from "./icons/right-arrow.svg";
 import "./styles/Slider.css";
-export default function BtnSlider(props) {
+export default function Slider(props) {
     return (
       <button
         onClick={props.move}

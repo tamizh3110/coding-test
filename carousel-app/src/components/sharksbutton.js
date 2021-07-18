@@ -7,12 +7,23 @@ class Sharksbutton extends React.Component{
         this.state = {
             toggle_sharks: false,
             sharks_list:[],
-            loading:false
+            loading:false,
+            violet:false
+
         }
         this.handleClick = this.handleClick.bind(this)
+        this.changeButtonColor = this.changeButtonColor.bind(this)
+    }
+
+    changeButtonColor(){
+        this.setState(prevState => ({
+            violet: !prevState.violet
+        }))
     }
 
     handleClick(){
+
+        this.changeButtonColor()
 
         this.setState(prevState => ({
             toggle_sharks:!prevState.toggle_sharks
@@ -43,9 +54,10 @@ class Sharksbutton extends React.Component{
 
     render()
         {
+            const classButtonColor = this.state.violet? "sharkVioletClass":"sharkClass" 
             return(
                 <div>
-                    <button class = "sharkClass" onClick={this.handleClick}>Sharks      
+                    <button class = {classButtonColor} onClick={this.handleClick}>Sharks      
                     </button>
                     {this.state.loading && <Spinner/> }
                 </div>

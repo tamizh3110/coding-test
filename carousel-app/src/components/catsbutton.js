@@ -7,13 +7,22 @@ class Catsbutton extends React.Component{
         this.state = {
             toggle_cats: false,
             cats_list:[],
-            loading:false
+            loading:false,
+            violet:false
         }
         this.handleClick = this.handleClick.bind(this)
+        this.changeButtonColor = this.changeButtonColor.bind(this)
+    }
+
+    changeButtonColor(){
+        this.setState(prevState => ({
+            violet: !prevState.violet
+        }))
     }
 
     handleClick(){
 
+        this.changeButtonColor()
         
         this.setState(prevState => ({
             toggle_cats:!prevState.toggle_cats
@@ -47,12 +56,13 @@ class Catsbutton extends React.Component{
 
     render()
         {
+
+            const classButtonColor = this.state.violet? "catVioletClass":"catClass" 
             return(
                 <div>
-                        <button class = "catClass" onClick={this.handleClick}>Cats 
+                        <button class = {classButtonColor} onClick={this.handleClick}>Cats 
                         </button>
                         {this.state.loading && <Spinner/> }
-                        {console.log(this.state.loading)} 
                                           
                 </div>
                 
