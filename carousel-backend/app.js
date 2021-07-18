@@ -23,7 +23,7 @@ app.use('/api',router)
 
 
 app.use((req,res,next) => {
-    res.status(500).send('Server error')
+    res.status(500).send({message:"server error"})
 })
 
 
