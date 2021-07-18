@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-
+import Spinner from './spinner'
 class Sharksbutton extends React.Component{
     constructor(props){
         super(props)
@@ -32,12 +32,6 @@ class Sharksbutton extends React.Component{
                     console.log(error)
                 }
                 
-                // axios.get('http://localhost:3001/api/sharks')
-                // .then(result => this.setState({
-                // loading: false,
-                // sharks_list: result.data,
-                // }, () => this.props.parentCall(this.state)));
-
             }else{
                 this.setState({
                     sharks_list:[],
@@ -51,8 +45,9 @@ class Sharksbutton extends React.Component{
         {
             return(
                 <div>
-                    <button onClick={this.handleClick}>Sharks      
+                    <button class = "sharkClass" onClick={this.handleClick}>Sharks      
                     </button>
+                    {this.state.loading && <Spinner/> }
                 </div>
             )
         }

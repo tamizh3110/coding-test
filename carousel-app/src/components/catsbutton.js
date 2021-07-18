@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-
+import Spinner from './spinner'
 class Catsbutton extends React.Component{
     constructor(props){
         super(props)
@@ -49,8 +49,11 @@ class Catsbutton extends React.Component{
         {
             return(
                 <div>
-                        <button onClick={this.handleClick}>Cats
+                        <button class = "catClass" onClick={this.handleClick}>Cats 
                         </button>
+                        {this.state.loading && <Spinner/> }
+                        {console.log(this.state.loading)} 
+                                          
                 </div>
                 
             )

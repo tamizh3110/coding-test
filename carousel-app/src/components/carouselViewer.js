@@ -1,36 +1,35 @@
-import React from 'react'
-import {Carousel} from "react-responsive-carousel"
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import React, {useState} from 'react'
+import shuffle from '../util/shuffle'
+import Slider from './slider'
 
-function carouselViewer(props) {
+function CarouselViewer(props) {
+
+    const [index, setImageIndex] = useState(1)
+
     const carouselData = shuffle(props.carouselData)
 
+    const nextImage = () => {
+        index === carouselData.length? setImageIndex(1) : setImageIndex(index + 1)
+    }
 
-    const images = carouselData.map((elem) => {
+    const prevImage = () => {
+        index === 1 ? setImageIndex(carouselData.length) : setImageIndex(index-1)
+    }
+
+    const images = carouselData.map((elem,index) => {
         return(
-            <div key = {elem}>
-                <img src = {elem} width = "auto" height="50%"/> 
+            <div key = {index}>
+                <img alt = {elem+index} src = {elem} width = "auto" height="50%"/> 
             </div>
         )
     })
     return (
-        <div class = "carouselParent">
-        <Carousel useKeyboardArrows>
+        <div class = "container-slider">
             {images}
-        </Carousel>
+            <Slider move={nextImage} direction={"next"} />
+            <Slider move={prevImage} direction={"prev"} />
         </div>
     )
 }
 
-function shuffle(data){
-
-    //Fisher Yates Shuffle
-    
-    for(let i = data.length-1;i>=0;i--){
-        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
-        [data[i], data[j]] = [data[j],data[i]];
-    }
-    return data    
-}
-
-export default carouselViewer
+export default CarouselViewer

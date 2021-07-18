@@ -2,7 +2,6 @@ import React from 'react'
 import Sharkbutton from './sharksbutton'
 import Catbutton from './catsbutton'
 import CarouselViewer from './carouselViewer'
-import Spinner from './spinner'
 
 class carousel extends React.Component{
 
@@ -56,9 +55,9 @@ class carousel extends React.Component{
         const finalImageList = this.filterImages()
 
         return (
-            <div>   
-                <Catbutton parentCall = {this.handleCatCallBack}/>
-                <Sharkbutton parentCall = {this.handleSharkCallBack} />
+            <div class = "grouping">   
+                <center><Catbutton parentCall = {this.handleCatCallBack}/></center>
+                <center><Sharkbutton parentCall = {this.handleSharkCallBack} /></center>
                 <CarouselViewer carouselData = {finalImageList} />
             </div>
         )

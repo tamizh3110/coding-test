@@ -9,7 +9,6 @@ router.get('/cats', (req,res) => {
 })
 
 router.get('/sharks',(req,res) => {
-
     res.status(200).send(sharksList)
 })
 
