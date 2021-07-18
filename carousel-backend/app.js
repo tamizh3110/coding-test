@@ -15,7 +15,7 @@ app.get('/',(req,res) => {
     res.status(200).send("HI OWNR")
 })
 
-app.use('/healthcheck',(req,res) => {
+app.get('/healthcheck',(req,res) => {
     res.status(200).send("ALL GOOD")
 })
 
