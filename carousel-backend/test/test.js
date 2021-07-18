@@ -1,4 +1,4 @@
-/* this is a test file  for API testing*/
+/* this is a file to test API testing*/
 
 let chai = require('chai');
 let chaiHttp = require('chai-http');
